@@ -134,6 +134,9 @@ function! s:compare_todo(a, b) abort
 endfunction
 
 function! s:open_todo() abort
+  if len(s:todos) <= 0
+    return 1
+  endif
   let todo = s:todos[line('.') - 1]
   try
     close
