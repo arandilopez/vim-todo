@@ -11,7 +11,7 @@ let s:BUFFER = SpaceVim#api#import('vim#buffer')
 let s:SYS = SpaceVim#api#import('system')
 
 " @question any other recommanded tag?
-let s:labels = map(['fixme', 'question', 'todo', 'idea', 'note'], '"@" . v:val')
+let s:labels = map(['fixme', 'question', 'todo', 'idea'], '"@" . v:val')
 
 let [
       \ s:grep_default_exe,
@@ -58,7 +58,7 @@ endfunction
 function! s:update_todo_content() abort
   let s:todos = []
   let s:todo = {}
-  let argv = [s:grep_default_exe] +
+  let argv = [s:grep_default_exe] + 
         \ s:grep_default_opt +
         \ s:grep_default_expr_opt
   " @fixme expr for defferent tools
@@ -98,7 +98,7 @@ function! s:stdout(id, data, event) abort
       let lebal = matchstr(data, join(s:labels, '\|'))
       let title = split(data, lebal)[1]
       " @todo add time tag
-      call add(s:todos,
+      call add(s:todos, 
             \ {
             \ 'file' : file,
             \ 'line' : line,
